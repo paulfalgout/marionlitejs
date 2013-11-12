@@ -57,15 +57,24 @@ var Marionlite = (function(global, $, _){
             }
         },
         module: function(module_name, define){
-            this[module_name] = this[module_name] || {};
-            
-            this._modules[module_name] = this[module_name];
-            
+            this[module_name] = this[module_name] || new Marionlite.module();
+
             define.call(this[module_name], this[module_name], this, $, _);
-            
+            this._modules[module_name] = this[module_name];
+
             return this;
         }
     });
-    
+
+    Marionlite.module = function(){
+        this.isInitialized = false;
+    };
+
+    _.extend(Marionlite.module.prototype, {
+        extend: function(obj){
+            _.extend(this, obj);
+        }
+    });
+
     return Marionlite;
 })(this, $, _);
