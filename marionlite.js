@@ -31,7 +31,7 @@ var Marionlite = (function(global, $, _){
         },
         on: function(name, callback, context){
             var events = this._events[name] || (this._events[name] = []);
-            events.push({callback: callback, context: context || this });
+            events.push({callback: callback, ctx: context || this });
             return this;
         },
         off: function(name){
