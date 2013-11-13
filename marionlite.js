@@ -8,8 +8,9 @@ var Marionlite = (function(global, $, _){
     };
 
     _.extend(Marionlite.prototype,{
-        initialize: function(){
+        initialize: function(options){
             this.trigger('initialize');
+            _.extend(this, options);
             _.each(this._modules, function(mod){
                 //prevent reinitializing a module
                 if(!mod.isInitialized && _.isFunction(mod.initialize)){
@@ -19,7 +20,8 @@ var Marionlite = (function(global, $, _){
             });
             return this;
         },
-        start: function(){
+        start: function(options){
+            _.extend(this, options);
             this.initialize();
             this.trigger('start');
             _.each(this._modules, function(mod){
