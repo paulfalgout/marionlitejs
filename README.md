@@ -1,3 +1,8 @@
+**This is deprecated**
+
+Marionette.Modules are deprecated as well.  If you must use a library similar to this try:
+[Marionette.module](https://github.com/marionettejs/marionette.module)
+
 Marionlitejs
 ============
 
